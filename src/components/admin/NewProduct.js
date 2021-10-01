@@ -18,7 +18,20 @@ const NewProduct = ({ history }) => {
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
-  const categories = ['Automatic', 'Quartz', 'Digital', 'Smart Watch'];
+  const categories = [
+    'Citizen',
+    'Hamilton',
+    'Hublot',
+    'Seiko',
+    'Longines',
+    'Michael Kors',
+    'Omega',
+    'Casio',
+    'Rolex',
+    'Tissot',
+    'Tag Heuer',
+    'Apple',
+  ];
 
   const alert = useAlert();
   const dispatch = useDispatch();

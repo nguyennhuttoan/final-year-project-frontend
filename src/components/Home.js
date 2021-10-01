@@ -20,7 +20,20 @@ const Home = ({ match }) => {
   const [category, setCategory] = useState('');
   const [rating, setRating] = useState(0);
 
-  const categories = ['Automatic', 'Quartz', 'Digital', 'Smart Watch'];
+  const categories = [
+    'Citizen',
+    'Hamilton',
+    'Hublot',
+    'Seiko',
+    'Longines',
+    'Michael Kors',
+    'Omega',
+    'Casio',
+    'Rolex',
+    'Tissot',
+    'Tag Heuer',
+    'Apple',
+  ];
 
   const alert = useAlert();
   const dispatch = useDispatch();
