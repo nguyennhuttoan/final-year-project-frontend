@@ -74,7 +74,7 @@ const Home = ({ match }) => {
         <Fragment>
           <MetaData title={'Buy Best Watches'} />
 
-          <h1 id="products_heading">Latest Products</h1>
+          <h1 id="products_heading">Best Selling Watches</h1>
 
           <section id="products" className="container mt-5">
             <div className="row">

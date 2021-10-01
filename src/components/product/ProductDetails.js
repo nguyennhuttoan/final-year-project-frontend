@@ -14,6 +14,7 @@ import {
 } from '../../actions/productActions';
 import { addItemToCart } from '../../actions/cartActions';
 import { NEW_REVIEW_RESET } from '../../constants/productConstants';
+import Product from './Product';
 
 const ProductDetails = ({ match }) => {
   const [quantity, setQuantity] = useState(1);
@@ -30,6 +31,8 @@ const ProductDetails = ({ match }) => {
   const { error: reviewError, success } = useSelector(
     (state) => state.newReview
   );
+
+  const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getProductDetails(match.params.id));
@@ -298,6 +301,14 @@ const ProductDetails = ({ match }) => {
           )}
         </Fragment>
       )}
+      <h3 id="products_heading">You may also like</h3>
+      <div className="col-4 col-md-12">
+        <div className="row">
+          {products.map((product) => (
+            <Product key={product._id} product={product} col={3} />
+          ))}
+        </div>
+      </div>
     </Fragment>
   );
 };
