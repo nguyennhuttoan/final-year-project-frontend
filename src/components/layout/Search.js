@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Search = ({ history }) => {
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState("");
 
   const searchHandler = (e) => {
     e.preventDefault();
 
     if (keyword.trim()) {
       history.push(`/search/${keyword}`);
+    } else if (keyword === "") {
+      history.push(`/search/watch`);
     } else {
-      history.push('/');
+      history.push("/");
     }
   };
 

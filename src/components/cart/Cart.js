@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 
-import MetaData from '../layout/MetaData';
+import MetaData from "../layout/MetaData";
 
-import { useAlert } from 'react-alert';
-import { useDispatch, useSelector } from 'react-redux';
-import { addItemToCart, removeItemFromCart } from '../../actions/cartActions';
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart, removeItemFromCart } from "../../actions/cartActions";
 
 const Cart = ({ history }) => {
   const dispatch = useDispatch();
@@ -33,12 +33,12 @@ const Cart = ({ history }) => {
   };
 
   const checkoutHandler = () => {
-    history.push('/login?redirect=shipping');
+    history.push("/login?redirect=shipping");
   };
 
   return (
     <Fragment>
-      <MetaData title={'Your Cart'} />
+      <MetaData title={"Your Cart"} />
       {cartItems.length === 0 ? (
         <h2 className="mt-5">Your Cart is Empty</h2>
       ) : (
@@ -60,9 +60,7 @@ const Cart = ({ history }) => {
                       </div>
 
                       <div className="col-5 col-lg-3">
-                        <Link to={`/products/${item.product}`}>
-                          {item.name}
-                        </Link>
+                        <Link to={`/product/${item.product}`}>{item.name}</Link>
                       </div>
 
                       <div className="col-4 col-lg-2 mt-4 mt-lg-0">
@@ -121,17 +119,17 @@ const Cart = ({ history }) => {
                 <h4>Order Summary</h4>
                 <hr />
                 <p>
-                  Subtotal:{' '}
+                  Subtotal:{" "}
                   <span className="order-summary-values">
                     {cartItems.reduce(
                       (acc, item) => acc + Number(item.quantity),
                       0
-                    )}{' '}
+                    )}{" "}
                     (Units)
                   </span>
                 </p>
                 <p>
-                  Est. total:{' '}
+                  Est. total:{" "}
                   <span className="order-summary-values">
                     $
                     {cartItems

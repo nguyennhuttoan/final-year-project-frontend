@@ -1,12 +1,12 @@
-import React, { Fragment, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import MetaData from '../layout/MetaData';
-import Loader from '../layout/Loader';
+import MetaData from "../layout/MetaData";
+import Loader from "../layout/Loader";
 
-import { useAlert } from 'react-alert';
-import { useDispatch, useSelector } from 'react-redux';
-import { getOrderDetails, clearErrors } from '../../actions/orderActions';
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrderDetails, clearErrors } from "../../actions/orderActions";
 
 const OrderDetails = ({ match }) => {
   const alert = useAlert();
@@ -40,11 +40,11 @@ const OrderDetails = ({ match }) => {
     `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.postalCode}, ${shippingInfo.country}`;
 
   const isPaid =
-    paymentInfo && paymentInfo.status === 'succeeded' ? true : false;
+    paymentInfo && paymentInfo.status === "succeeded" ? true : false;
 
   return (
     <Fragment>
-      <MetaData title={'Order Details'} />
+      <MetaData title={"Order Details"} />
 
       {loading ? (
         <Loader />
@@ -62,7 +62,7 @@ const OrderDetails = ({ match }) => {
                 <b>Phone:</b> {shippingInfo && shippingInfo.phoneNo}
               </p>
               <p className="mb-4">
-                <b>Address:</b>
+                <b>Address: </b>
                 {shippingDetails}
               </p>
               <p>
@@ -72,17 +72,17 @@ const OrderDetails = ({ match }) => {
               <hr />
 
               <h4 className="my-4">Payment</h4>
-              <p className={isPaid ? 'greenColor' : 'redColor'}>
-                <b>{isPaid ? 'PAID' : 'NOT PAID'}</b>
+              <p className={isPaid ? "greenColor" : "redColor"}>
+                <b>{isPaid ? "PAID" : "NOT PAID"}</b>
               </p>
 
               <h4 className="my-4">Order Status:</h4>
               <p
                 className={
                   order.orderStatus &&
-                  String(order.orderStatus).includes('Delivered')
-                    ? 'greenColor'
-                    : 'redColor'
+                  String(order.orderStatus).includes("Delivered")
+                    ? "greenColor"
+                    : "redColor"
                 }
               >
                 <b>{orderStatus}</b>
@@ -100,9 +100,7 @@ const OrderDetails = ({ match }) => {
                       </div>
 
                       <div className="col-5 col-lg-5">
-                        <Link to={`/products/${item.product}`}>
-                          {item.name}
-                        </Link>
+                        <Link to={`/product/${item.product}`}>{item.name}</Link>
                       </div>
 
                       <div className="col-4 col-lg-2 mt-4 mt-lg-0">

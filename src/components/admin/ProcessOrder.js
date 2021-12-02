@@ -1,21 +1,21 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import MetaData from '../layout/MetaData';
-import Loader from '../layout/Loader';
-import Sidebar from './Sidebar';
+import MetaData from "../layout/MetaData";
+import Loader from "../layout/Loader";
+import Sidebar from "./Sidebar";
 
-import { useAlert } from 'react-alert';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getOrderDetails,
   updateOrder,
   clearErrors,
-} from '../../actions/orderActions';
-import { UPDATE_ORDER_RESET } from '../../constants/orderConstants';
+} from "../../actions/orderActions";
+import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 
 const ProcessOrder = ({ match }) => {
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState("");
 
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -42,14 +42,14 @@ const ProcessOrder = ({ match }) => {
     }
 
     if (isUpdated) {
-      alert.success('Order updated successfully');
+      alert.success("Order updated successfully");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
   }, [dispatch, alert, error, isUpdated, orderId]);
 
   const updateOrderHandler = (id) => {
     const formData = new FormData();
-    formData.set('status', status);
+    formData.set("status", status);
 
     dispatch(updateOrder(id, formData));
   };
@@ -58,7 +58,7 @@ const ProcessOrder = ({ match }) => {
     shippingInfo &&
     `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.postalCode}, ${shippingInfo.country}`;
   const isPaid =
-    paymentInfo && paymentInfo.status === 'succeeded' ? true : false;
+    paymentInfo && paymentInfo.status === "succeeded" ? true : false;
 
   return (
     <Fragment>
@@ -95,8 +95,8 @@ const ProcessOrder = ({ match }) => {
                   <hr />
 
                   <h4 className="my-4">Payment</h4>
-                  <p className={isPaid ? 'greenColor' : 'redColor'}>
-                    <b>{isPaid ? 'PAID' : 'NOT PAID'}</b>
+                  <p className={isPaid ? "greenColor" : "redColor"}>
+                    <b>{isPaid ? "PAID" : "NOT PAID"}</b>
                   </p>
 
                   <h4 className="my-4">Stripe ID</h4>
@@ -108,9 +108,9 @@ const ProcessOrder = ({ match }) => {
                   <p
                     className={
                       order.orderStatus &&
-                      String(order.orderStatus).includes('Delivered')
-                        ? 'greenColor'
-                        : 'redColor'
+                      String(order.orderStatus).includes("Delivered")
+                        ? "greenColor"
+                        : "redColor"
                     }
                   >
                     <b>{orderStatus}</b>
@@ -128,7 +128,7 @@ const ProcessOrder = ({ match }) => {
                           </div>
 
                           <div className="col-5 col-lg-5">
-                            <Link to={`/products/${item.product}`}>
+                            <Link to={`/product/${item.product}`}>
                               {item.name}
                             </Link>
                           </div>
